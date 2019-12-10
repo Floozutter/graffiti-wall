@@ -1,5 +1,6 @@
 from gwall import socketio
+from gwall import wall
 
-@socketio.on("image", namespace="/wall")
+@socketio.on("fullimage", namespace="/wall")
 def handle_canvas(message):
     pass

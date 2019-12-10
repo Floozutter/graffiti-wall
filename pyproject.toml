@@ -8,6 +8,7 @@ authors = ["Floozutter <floozutter@gmail.com>"]
 python = "^3.7"
 flask = "^1.1"
 flask-socketio = "^4.2"
+Pillow = "^6.2"
 
 [tool.poetry.dev-dependencies]
 
