@@ -7,7 +7,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 wall = canvas.Canvas()
-wall.restore("snapshots/")
+wall.restore("./gwall/snapshots/")
 
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
