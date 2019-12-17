@@ -7,6 +7,10 @@ from os import walk
 
 class Canvas:
     def __init__(self):
+        self.img = None
+        self.lastsaved = None
+        self.reset()
+    def reset(self):
         self.img = Image.new(
                 mode="RGB",
                 size=(1000, 600),
@@ -39,5 +43,5 @@ class Canvas:
         decoded = b64decode(strimg)
         buffer = BytesIO(decoded)
         img = Image.open(buffer)
-        img.save("thing.png", "PNG")
+        #img.save("thing.png", "PNG")
         self.img.paste(img, (0, 0), img)

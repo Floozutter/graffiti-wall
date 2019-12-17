@@ -19,3 +19,14 @@ def getedit(json):
     print("Returning updated image!")
     data = {"strimg" : wall.stringify()}
     socketio.emit("fullimage", data)
+    if wall.seconds_since_save() >= 10:
+        print("Saving!")
+        wall.save("./gwall/snapshots/")
+
+@socketio.on("erase")
+def getedit():
+    print("Erasing it all!")
+    wall.save("./gwall/snapshots/")
+    wall.reset()
+    data = {"strimg" : wall.stringify()}
+    socketio.emit("fullimage", data)

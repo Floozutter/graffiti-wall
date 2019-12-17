@@ -4,6 +4,15 @@ socket.on("connect", function() {
 	socket.emit("imagepls");
 });
 
+
+var colorpicker = document.getElementById("colorpicker");
+var color = parseInt(colorpicker.value.slice(1), 16);
+
+colorpicker.addEventListener("input", function () {
+	color = parseInt(colorpicker.value.slice(1), 16);
+}, false);
+
+
 var canvas = document.getElementById("wall_canvas");
 var app = new PIXI.Application({
 	width: 1000,
@@ -24,6 +33,7 @@ socket.on("fullimage", function(data) {
 	let base = new PIXI.BaseTexture(img);
 	let texture = new PIXI.Texture(base);
 	wallsprite.texture = texture;
+	app.renderer.render(app.stage);
 });
 
 
@@ -41,7 +51,10 @@ function addPoint(event) {
 
 function drawLines() {
 	graphics.clear();
-	graphics.lineStyle(6, 0xFF0000);
+	graphics.lineStyle(6, color);
+	if (drawPoints.length == 0) {
+		return;
+	}
 	let first = drawPoints[0];
 	graphics.moveTo(first.x, first.y);
 	for (const point of drawPoints) {
@@ -100,3 +113,11 @@ function onKeyDown(key) {
 		}
 	}
 }
+
+function erase() {
+	drawPoints = [];
+	drawLines();
+	app.renderer.render(app.stage);
+	socket.emit("erase");
+}
+

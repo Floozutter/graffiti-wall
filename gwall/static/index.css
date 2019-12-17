@@ -44,3 +44,89 @@ body {
 
 	overflow: hidden;
 }
+
+
+/******************************************************************************************************
+
+CORNER TEXT
+
+******************************************************************************************************/
+
+.corner-text{
+	width: 220px;
+	color: #eee;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.3em;
+	position: absolute;
+}
+.corner-text a{
+	color: #eee;
+}
+.corner-text a:hover{
+	color: #fff;
+}
+#topleft{
+	top:10px;
+	left:10px;
+	text-align: left;
+}
+#bottomleft{
+	bottom:10px;
+	left:10px;
+	text-align: left;
+}
+#topright{
+	top:10px;
+	right:10px;
+	text-align: right;
+}
+#bottomright{
+	bottom:10px;
+	right:10px;
+	text-align: right;
+}
+.no_deco{
+	text-decoration: none;
+}
+#sharing_title, #sharing_desc{
+	display: none;
+}
+#share{
+	overflow: hidden;
+	text-align: right;
+    padding: 5px 0;
+}
+#share div{
+	display: inline-block;
+	overflow: hidden;
+	width:30px; height:30px;
+	background: url(../sprites/about/share.png);
+    background-size: 300%;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.7;
+}
+#share div:hover{
+	opacity: 1;
+	top:-2px;
+}
+#share #share_fb{
+	background-position: 0px;
+}
+#share #share_tw{
+	background-position: -30px;
+}
+#share #share_em{
+	background-position: -60px;
+}
+@media screen and (max-width: 800px) {
+	.corner-text {
+		display: none;
+	}
+}
+
+.hide-if-cuss-free{
+	display: none;
+}
