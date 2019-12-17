@@ -1,5 +1,5 @@
 from PIL import Image
-from base64 import b64encode
+from base64 import b64encode, b64decode
 from io import BytesIO
 from datetime import datetime
 from os import walk
@@ -19,6 +19,7 @@ class Canvas:
             filenames.extend(files)
             break
         if not filenames:
+            print("No snapshots to restore from!")
             return
         print("Restoring from:", dirpath + max(filenames))
         self.img = Image.open(dirpath + max(filenames))
@@ -33,5 +34,10 @@ class Canvas:
         self.img.save(buffer, format="PNG")
         imgstr = str(b64encode(buffer.getvalue()))[2:-1]
         return imgstr
-    def update(json):
-        pass
+    def update(self, json):
+        strimg = json["strimg"][22:]
+        decoded = b64decode(strimg)
+        buffer = BytesIO(decoded)
+        img = Image.open(buffer)
+        img.save("thing.png", "PNG")
+        self.img.paste(img, (0, 0), img)

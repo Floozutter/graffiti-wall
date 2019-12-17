@@ -8,7 +8,7 @@ def welcome():
 
 @socketio.on("imagepls")
 def sendimage():
-    print("Sending an image!")
+    print("Sending the image!")
     data = {"strimg" : wall.stringify()}
     socketio.emit("fullimage", data)
 
@@ -16,3 +16,6 @@ def sendimage():
 def getedit(json):
     print("Getting an edit!")
     wall.update(json)
+    print("Returning updated image!")
+    data = {"strimg" : wall.stringify()}
+    socketio.emit("fullimage", data)
