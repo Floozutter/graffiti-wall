@@ -22,6 +22,7 @@ class Canvas:
         for _, _, files in walk(dirpath):
             filenames.extend(files)
             break
+        filenames.remove(".gitignore")
         if not filenames:
             print("No snapshots to restore from!")
             return

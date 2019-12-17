@@ -6,10 +6,13 @@ from gwall import canvas
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+app.secret_key = "uwu"
+app.config["SERVER_NAME"] = "http://floozutter.com:5000"
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
+
+
 wall = canvas.Canvas()
 wall.restore("./gwall/snapshots/")
-
-app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
 from gwall import routes
 from gwall import sockets
